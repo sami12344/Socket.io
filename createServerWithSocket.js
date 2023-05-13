@@ -1,0 +1,10 @@
+const express = require('express')
+const app = express()
+const http = require('http')
+const {Server} = require('socket.io')
+const expressServer = http.createServer(app)
+const io = new Server(expressServer)
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html')
+})
+expressServer.listen(3000, () => console.log('Server run at 3000'))
