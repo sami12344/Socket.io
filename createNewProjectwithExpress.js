@@ -1,17 +1,11 @@
+
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 8000
-app.use( express.json())
+const http = require('http')
+const expressServer = http.createServer(app)
 
 
-
-
-
-
-
-
-
-
-
-
-app.listen(port, ()=> console.log('server running at port no '+ port))
+app.get('/', (req,res)=>{
+ res.sendFile(__dirname+'/index.html')
+})
+expressServer.listen(3000, ()=> console.log("Server run at 3000"))
